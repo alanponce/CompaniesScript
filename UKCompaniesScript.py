@@ -8,7 +8,7 @@ import os
 
 import duedil
 
-api_key ='uq4wy8z7hkra5nnfqu9yuv7j'
+api_key ='XXXXX'
 
 url = 'http://duedil.io/v3/uk/companies/06999618' #The number is the company number
 url +='?api_key=' + api_key

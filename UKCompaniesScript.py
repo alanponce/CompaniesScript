@@ -7,7 +7,7 @@ import time
 
 URL = 'http://duedil.io/v3/uk/companies/'  # The number is the company number
 API_KEY = {'api_key': 'uq4wy8z7hkra5nnfqu9yuv7j'}
-TIME_SLEEP = 1  # time interval between two call in sec. Can be in float number
+TIME_SLEEP = 0  # time interval between two call in sec. Can be in float number
 INFILE = './DuedilListFinal.csv'
 
 def get_list_company(infile):
@@ -49,6 +49,7 @@ def main():
         print(company)
         url = create_url(URL, company, API_KEY)
         status, response = parseCompany(url)
+        time.sleep(TIME_SLEEP)
 
 if __name__ == '__main__':
     main()

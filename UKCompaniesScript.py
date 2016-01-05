@@ -2,6 +2,7 @@
 Test the API functionality
 """
 import requests
+import csv
 import time
 
 
@@ -15,8 +16,9 @@ def get_list_company(infile):
     """
     # outlist = list()
     with open(infile, 'r') as f:
-        for l in f:
-            yield l[:-1]  # skyp the \r from the new line
+        csvreader = csv.reader(f)
+        for l in csvreader:
+            yield l[0]  # csv reader return a list, just yield the unique element of the list to return un str
             # outlist.append(l)
     # return outlist
 
@@ -49,6 +51,7 @@ def main():
         print(company)
         url = create_url(URL, company, API_KEY)
         status, response = parseCompany(url)
+        print(response)
         time.sleep(TIME_SLEEP)
 
 if __name__ == '__main__':

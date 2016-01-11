@@ -57,18 +57,26 @@ def company_result():
         time.sleep(TIME_SLEEP)
         url = create_url(URL, company, API_KEY)
         status, response = parse_company(url)
-        print(company)
+        print(response)
         yield company, response
 
 
 def main():
     # to reinitialise the file, comment if you don't want that behaviour
-    with open(OUTFILE, 'w') as out: pass
+    with open(OUTFILE, 'w') as out:
+        out.write('[')
+    n = 0
     for company, response in company_result():
-        response.update({'company_name': company})  # add our own field in the response dict
+        proper_resp = dict()
+        proper_resp['response'] = response
+        proper_resp['request_id'] = company  # add our own field in the response dict
         with open(OUTFILE, 'a') as out:
-            json.dump(response, out)
-
+            if n > 0:
+                out.write(',')
+            json.dump(proper_resp, out)
+        n +=1
+    with open(OUTFILE, 'a') as out:
+        out.write(']')
 
 if __name__ == '__main__':
     main()

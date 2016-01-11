@@ -9,7 +9,7 @@ import time
 # Global variables
 
 URL = 'http://duedil.io/v3/uk/companies/'  # The number is the company number
-API_KEY = {'api_key': 'uq4wy8z7hkra5nnfqu9yuv7j'}
+API_KEY = {'api_key': 'XXXXX'}
 TIME_SLEEP = 0  # time interval between two call in sec. Can be in float number
 INFILE = './DuedilListFinal.csv'
 OUTFILE = './result.json'
